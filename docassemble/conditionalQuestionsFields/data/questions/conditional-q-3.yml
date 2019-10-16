@@ -1,0 +1,35 @@
+question: |
+  Who are you thanking?
+fields: 
+  - Name: recipient
+  - Address: recipient_address
+  - City: recipient_city
+  - State: recipient_state
+  - Zip: recipient_zip
+---
+question: |
+  Do you want to explain why?
+fields: 
+  - no label: explanation_needed
+    datatype: yesnoradio  
+  - Explain: explan
+    datatype: area
+    hide if: 
+      variable: 
+        explanation_needed
+      is: 
+        false
+
+---
+question: |
+  Here is your thank you letter.
+subquestion: |
+  Don't forget to send it...
+attachment:
+  name: thank_you
+  filename: thank_you
+  docx template file: thank_you_note.docx
+  valid formats:
+    - pdf
+    - docx
+mandatory: True
